@@ -42,7 +42,6 @@
       background-color: var(--background);
       color: var(--primary);
       font-family:
-        Inter,
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
@@ -53,7 +52,7 @@
 
     img {
       display: block;
-      max-width: 50%;
+      max-width: 100%;
     }
 
     a {
@@ -68,7 +67,7 @@
       margin: 0 auto;
     }
 
-    /* Header and navigation */
+    /* Header */
 
     .site-header {
       position: sticky;
@@ -138,7 +137,7 @@
 
     .hero {
       min-height: calc(100vh - 76px);
-      padding: 90px 0;
+      padding: 80px 0;
 
       display: flex;
       align-items: center;
@@ -146,12 +145,12 @@
 
     .hero-layout {
       display: grid;
-      grid-template-columns: 0.75fr 1.25fr;
+      grid-template-columns: 300px 1fr;
       align-items: center;
       gap: 75px;
     }
 
-    /* Profile picture */
+    /* Smaller profile picture */
 
     .profile-area {
       position: relative;
@@ -164,11 +163,11 @@
     .profile-background {
       position: absolute;
 
-      width: 330px;
-      height: 360px;
+      width: 230px;
+      height: 260px;
 
       background-color: var(--light-blue);
-      border-radius: 38px;
+      border-radius: 28px;
 
       transform: rotate(-6deg);
     }
@@ -176,15 +175,15 @@
     .profile-image {
       position: relative;
 
-      width: 330px;
-      height: 390px;
+      width: 230px;
+      height: 280px;
 
       object-fit: cover;
       object-position: center top;
 
       background-color: #e2e8f0;
-      border: 8px solid #ffffff;
-      border-radius: 32px;
+      border: 6px solid #ffffff;
+      border-radius: 25px;
 
       box-shadow: var(--shadow);
     }
@@ -203,16 +202,16 @@
       margin: 0;
 
       color: var(--primary);
-      font-size: clamp(3.5rem, 8vw, 6.5rem);
-      line-height: 0.98;
-      letter-spacing: -0.06em;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 1;
+      letter-spacing: -0.055em;
     }
 
     .hero h2 {
       margin: 22px 0;
 
       color: var(--secondary);
-      font-size: clamp(1.6rem, 4vw, 2.7rem);
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
       line-height: 1.2;
       letter-spacing: -0.03em;
     }
@@ -278,7 +277,7 @@
 
     .section {
       padding: 100px 0;
-      scroll-margin-top: 75px;
+      scroll-margin-top: 80px;
     }
 
     .section-header {
@@ -463,7 +462,7 @@
 
     .project-image {
       width: 100%;
-      height: 230px;
+      height: 220px;
 
       display: flex;
       align-items: center;
@@ -526,7 +525,6 @@
 
     .contact-box h2 {
       margin: 0;
-
       font-size: clamp(2rem, 5vw, 3rem);
     }
 
@@ -572,7 +570,7 @@
       text-align: center;
     }
 
-    /* Tablet and mobile */
+    /* Tablet */
 
     @media (max-width: 900px) {
       .navbar {
@@ -587,17 +585,17 @@
 
       .hero-layout {
         grid-template-columns: 1fr;
-        gap: 60px;
+        gap: 50px;
       }
 
       .profile-background {
-        width: 280px;
-        height: 310px;
+        width: 210px;
+        height: 230px;
       }
 
       .profile-image {
-        width: 280px;
-        height: 340px;
+        width: 210px;
+        height: 250px;
       }
 
       .hero-content {
@@ -625,6 +623,8 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* Mobile */
 
     @media (max-width: 600px) {
       .container {
@@ -657,17 +657,17 @@
 
       .hero {
         min-height: auto;
-        padding: 60px 0;
+        padding: 55px 0;
       }
 
       .profile-background {
-        width: 230px;
-        height: 260px;
+        width: 180px;
+        height: 200px;
       }
 
       .profile-image {
-        width: 230px;
-        height: 285px;
+        width: 180px;
+        height: 215px;
       }
 
       .section {
@@ -740,7 +740,7 @@
     <section class="hero" id="home">
       <div class="hero-layout container">
 
-        <!-- Profile picture on the left -->
+        <!-- Profile picture -->
 
         <div class="profile-area">
           <div class="profile-background"></div>
@@ -752,7 +752,7 @@
           >
         </div>
 
-        <!-- Introduction on the right -->
+        <!-- Introduction -->
 
         <div class="hero-content">
 
@@ -762,11 +762,11 @@
 
           <h1>Saeed Norouzi</h1>
 
-          <!-- Replace this with your real job title -->
+          <!-- Replace this with your job title -->
 
           <h2>Your Professional Job Title</h2>
 
-          <!-- Replace this with your real introduction -->
+          <!-- Replace this with your introduction -->
 
           <p class="hero-description">
             I am a motivated professional specializing in my field.
@@ -805,6 +805,7 @@
       <div class="container">
 
         <div class="section-header">
+
           <p class="section-label">
             Introduction
           </p>
@@ -812,11 +813,10 @@
           <h2 class="section-title">
             About Me
           </h2>
+
         </div>
 
         <div class="about-layout">
-
-          <!-- Replace this paragraph with your information -->
 
           <p class="about-text">
             I am a dedicated professional with experience in my field.
@@ -933,8 +933,7 @@
           </h2>
 
           <p class="section-description">
-            Add the skills that are relevant to the jobs you are
-            applying for.
+            Add skills that are relevant to the jobs you are applying for.
           </p>
 
         </div>
@@ -1005,8 +1004,6 @@
 
         <div class="projects-grid">
 
-          <!-- Project one -->
-
           <article class="project-card">
 
             <div class="project-image">
@@ -1048,8 +1045,6 @@
 
             </div>
           </article>
-
-          <!-- Project two -->
 
           <article class="project-card">
 
@@ -1114,16 +1109,12 @@
 
           <div class="contact-links">
 
-            <!-- Replace with your real email -->
-
             <a
               class="contact-link"
               href="mailto:your-email@example.com"
             >
               Email
             </a>
-
-            <!-- Replace with your GitHub address if necessary -->
 
             <a
               class="contact-link"
@@ -1133,8 +1124,6 @@
             >
               GitHub
             </a>
-
-            <!-- Replace with your real LinkedIn address -->
 
             <a
               class="contact-link"
@@ -1153,8 +1142,6 @@
     </section>
 
   </main>
-
-  <!-- Footer -->
 
   <footer>
     <div class="container">
