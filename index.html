@@ -2,34 +2,478 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
   <title>Saeed Norouzi | Portfolio</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
+      margin: 0;
       background-color: #eaf4ff;
       color: #1e293b;
       font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: 0 auto;
+    }
+
+    /* Header */
+
+    header {
+      position: sticky;
+      top: 0;
+      background-color: #eaf4ff;
+      border-bottom: 1px solid #cbd5e1;
+      z-index: 100;
+    }
+
+    nav {
+      min-height: 75px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .logo {
+      margin-right: auto;
+      color: #0f172a;
+      font-size: 20px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    nav a {
+      color: #475569;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: #2563eb;
+    }
+
+    .cv-button {
+      padding: 10px 18px;
+      background-color: #2563eb;
+      color: white;
+      border-radius: 7px;
+    }
+
+    .cv-button:hover {
+      background-color: #1d4ed8;
+      color: white;
+    }
+
+    /* Hero section */
+
+    .hero {
+      min-height: 75vh;
+      display: flex;
+      align-items: center;
+      padding: 80px 0;
+    }
+
+    .hero-content {
+      max-width: 750px;
+    }
+
+    .intro {
+      margin-bottom: 5px;
+      color: #2563eb;
+      font-weight: bold;
+    }
+
+    h1 {
       margin: 0;
-      padding: 50px;
+      color: #0f172a;
+      font-size: clamp(42px, 8vw, 75px);
+      line-height: 1.1;
+    }
+
+    .hero h2 {
+      margin: 15px 0;
+      color: #475569;
+      font-size: clamp(25px, 5vw, 40px);
+    }
+
+    .hero-description {
+      max-width: 650px;
+      color: #475569;
+      font-size: 18px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 22px;
+      border: 2px solid #2563eb;
+      border-radius: 7px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .primary-button {
+      background-color: #2563eb;
+      color: white;
+    }
+
+    .primary-button:hover {
+      background-color: #1d4ed8;
+    }
+
+    .secondary-button {
+      color: #2563eb;
+    }
+
+    .secondary-button:hover {
+      background-color: #dbeafe;
+    }
+
+    /* General sections */
+
+    section {
+      padding: 80px 0;
+      scroll-margin-top: 80px;
+    }
+
+    .section-title {
+      margin-top: 0;
+      margin-bottom: 25px;
+      color: #0f172a;
+      font-size: 32px;
+    }
+
+    .section-text {
+      max-width: 750px;
+      color: #475569;
+      font-size: 17px;
+    }
+
+    /* Skills */
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .skill {
+      padding: 9px 15px;
+      background-color: white;
+      border: 1px solid #cbd5e1;
+      border-radius: 20px;
+    }
+
+    /* Projects */
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .project-card {
+      padding: 28px;
+      background-color: white;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+    }
+
+    .project-card h3 {
+      margin-top: 0;
+      color: #0f172a;
+      font-size: 23px;
+    }
+
+    .project-card p {
+      color: #475569;
+    }
+
+    .technology {
+      color: #2563eb;
+      font-weight: bold;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-right: 15px;
+      margin-top: 10px;
+      color: #2563eb;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Contact */
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    /* Footer */
+
+    footer {
+      padding: 30px 0;
+      text-align: center;
+      color: #64748b;
+      border-top: 1px solid #cbd5e1;
+    }
+
+    /* Mobile */
+
+    @media (max-width: 750px) {
+      nav {
+        flex-wrap: wrap;
+        padding: 18px 0;
+        gap: 15px;
+      }
+
+      .logo {
+        width: 100%;
+      }
+
+      .cv-button {
+        padding: 7px 12px;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 
 <body>
 
-    <header>
-    <nav>
-      <strong>Saeed Norouzi</strong>
+  <header>
+    <nav class="container">
+      <a class="logo" href="#home">Saeed Norouzi</a>
 
       <a href="#about">About</a>
+      <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
+
+      <a
+        class="cv-button"
+        href="Saeed-Norouzi-CV.pdf"
+        target="_blank"
+      >
+        View CV
+      </a>
     </nav>
   </header>
-  
-  <h1>Saeed Norouzi</h1>
-  <h2>CV & Professional Portfolio</h2>
-  <p>Welcome to my professional portfolio.</p>
+
+  <main>
+
+    <section class="hero" id="home">
+      <div class="container hero-content">
+
+        <p class="intro">Hello, my name is</p>
+
+        <h1>Saeed Norouzi</h1>
+
+        <h2>Your Professional Job Title</h2>
+
+        <p class="hero-description">
+          I am a motivated professional with experience in
+          your field. I enjoy solving problems, learning new
+          technologies, and creating useful projects.
+        </p>
+
+        <div class="hero-buttons">
+          <a
+            class="button primary-button"
+            href="#projects"
+          >
+            View My Projects
+          </a>
+
+          <a
+            class="button secondary-button"
+            href="#contact"
+          >
+            Contact Me
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+
+        <h2 class="section-title">About Me</h2>
+
+        <p class="section-text">
+          Write a short professional introduction here.
+          Explain your education, experience, strongest skills,
+          and the type of job you are currently looking for.
+        </p>
+
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+
+        <h2 class="section-title">Skills</h2>
+
+        <p class="section-text">
+          These are some of the tools and technologies I use.
+        </p>
+
+        <div class="skills-list">
+          <span class="skill">Python</span>
+          <span class="skill">JavaScript</span>
+          <span class="skill">HTML</span>
+          <span class="skill">CSS</span>
+          <span class="skill">SQL</span>
+          <span class="skill">Git</span>
+          <span class="skill">GitHub</span>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+
+        <h2 class="section-title">Projects</h2>
+
+        <div class="project-grid">
+
+          <article class="project-card">
+            <h3>Project One</h3>
+
+            <p>
+              Describe the problem you solved and what your
+              project does.
+            </p>
+
+            <p class="technology">
+              HTML · CSS · JavaScript
+            </p>
+
+            <a
+              class="project-link"
+              href="#"
+            >
+              View Project
+            </a>
+
+            <a
+              class="project-link"
+              href="#"
+            >
+              GitHub
+            </a>
+          </article>
+
+          <article class="project-card">
+            <h3>Project Two</h3>
+
+            <p>
+              Describe the purpose of this project and your
+              contribution to it.
+            </p>
+
+            <p class="technology">
+              Python · SQL
+            </p>
+
+            <a
+              class="project-link"
+              href="#"
+            >
+              View Project
+            </a>
+
+            <a
+              class="project-link"
+              href="#"
+            >
+              GitHub
+            </a>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+
+        <h2 class="section-title">Contact</h2>
+
+        <p class="section-text">
+          I am currently open to new professional opportunities.
+          You can contact me using the links below.
+        </p>
+
+        <div class="contact-links">
+
+          <a
+            class="button primary-button"
+            href="mailto:your-email@example.com"
+          >
+            Email Me
+          </a>
+
+          <a
+            class="button secondary-button"
+            href="https://github.com/saeednrz"
+            target="_blank"
+          >
+            GitHub
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Saeed Norouzi
+    </div>
+  </footer>
+
 </body>
 </html>
