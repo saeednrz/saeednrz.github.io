@@ -25,8 +25,8 @@
       --accent-dark: #1d4ed8;
       --light-blue: #eff6ff;
       --border: #e2e8f0;
-      --shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
-      --container: 1120px;
+      --container-width: 1120px;
+      --shadow: 0 20px 50px rgba(15, 23, 42, 0.1);
     }
 
     * {
@@ -39,7 +39,7 @@
 
     body {
       margin: 0;
-      background: var(--background);
+      background-color: var(--background);
       color: var(--primary);
       font-family:
         Inter,
@@ -52,6 +52,7 @@
     }
 
     img {
+      display: block;
       max-width: 100%;
     }
 
@@ -60,23 +61,30 @@
     }
 
     .container {
-      width: min(var(--container), calc(100% - 48px));
+      width: min(
+        var(--container-width),
+        calc(100% - 48px)
+      );
       margin: 0 auto;
     }
 
-    /* Header */
+    /* Header and navigation */
 
     .site-header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(248, 250, 252, 0.94);
+
+      background-color: rgba(248, 250, 252, 0.95);
       border-bottom: 1px solid var(--border);
+
       backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
 
     .navbar {
       min-height: 76px;
+
       display: flex;
       align-items: center;
       gap: 28px;
@@ -84,6 +92,7 @@
 
     .logo {
       margin-right: auto;
+
       color: var(--primary);
       font-size: 1.2rem;
       font-weight: 800;
@@ -96,6 +105,7 @@
       font-size: 0.95rem;
       font-weight: 600;
       text-decoration: none;
+
       transition: color 0.2s ease;
     }
 
@@ -105,60 +115,85 @@
 
     .nav-cv {
       padding: 10px 18px;
+
       color: #ffffff;
-      background: var(--accent);
+      background-color: var(--accent);
       border-radius: 8px;
+
       font-size: 0.9rem;
       font-weight: 700;
       text-decoration: none;
+
       transition:
-        background 0.2s ease,
+        background-color 0.2s ease,
         transform 0.2s ease;
     }
 
     .nav-cv:hover {
-      background: var(--accent-dark);
+      background-color: var(--accent-dark);
       transform: translateY(-1px);
     }
 
-    /* Hero */
+    /* Hero section */
 
     .hero {
       min-height: calc(100vh - 76px);
+      padding: 90px 0;
+
       display: flex;
       align-items: center;
-      padding: 90px 0;
     }
 
     .hero-layout {
       display: grid;
-      grid-template-columns: 1.3fr 0.7fr;
+      grid-template-columns: 0.75fr 1.25fr;
       align-items: center;
-      gap: 80px;
+      gap: 75px;
     }
 
-    .availability {
-      display: inline-flex;
+    /* Profile picture */
+
+    .profile-area {
+      position: relative;
+
+      display: flex;
+      justify-content: center;
       align-items: center;
-      gap: 9px;
-      margin-bottom: 20px;
-      padding: 7px 13px;
-      color: #166534;
-      background: #dcfce7;
-      border-radius: 30px;
-      font-size: 0.85rem;
-      font-weight: 700;
     }
 
-    .availability-dot {
-      width: 8px;
-      height: 8px;
-      background: #22c55e;
-      border-radius: 50%;
+    .profile-background {
+      position: absolute;
+
+      width: 330px;
+      height: 360px;
+
+      background-color: var(--light-blue);
+      border-radius: 38px;
+
+      transform: rotate(-6deg);
     }
+
+    .profile-image {
+      position: relative;
+
+      width: 330px;
+      height: 390px;
+
+      object-fit: cover;
+      object-position: center top;
+
+      background-color: #e2e8f0;
+      border: 8px solid #ffffff;
+      border-radius: 32px;
+
+      box-shadow: var(--shadow);
+    }
+
+    /* Hero text */
 
     .hero-intro {
       margin: 0 0 8px;
+
       color: var(--accent);
       font-size: 1rem;
       font-weight: 700;
@@ -166,6 +201,8 @@
 
     .hero h1 {
       margin: 0;
+
+      color: var(--primary);
       font-size: clamp(3.5rem, 8vw, 6.5rem);
       line-height: 0.98;
       letter-spacing: -0.06em;
@@ -173,6 +210,7 @@
 
     .hero h2 {
       margin: 22px 0;
+
       color: var(--secondary);
       font-size: clamp(1.6rem, 4vw, 2.7rem);
       line-height: 1.2;
@@ -182,84 +220,61 @@
     .hero-description {
       max-width: 680px;
       margin: 0;
+
       color: var(--secondary);
       font-size: 1.1rem;
     }
 
     .hero-buttons {
+      margin-top: 32px;
+
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-top: 32px;
     }
 
     .button {
+      min-height: 48px;
+      padding: 11px 21px;
+
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 11px 21px;
+
       border: 2px solid var(--accent);
       border-radius: 9px;
+
       font-weight: 700;
       text-decoration: none;
+
       transition:
-        background 0.2s ease,
+        background-color 0.2s ease,
         color 0.2s ease,
         transform 0.2s ease;
     }
 
     .button-primary {
       color: #ffffff;
-      background: var(--accent);
+      background-color: var(--accent);
     }
 
     .button-primary:hover {
-      background: var(--accent-dark);
+      background-color: var(--accent-dark);
       border-color: var(--accent-dark);
       transform: translateY(-2px);
     }
 
     .button-secondary {
       color: var(--accent);
-      background: transparent;
+      background-color: transparent;
     }
 
     .button-secondary:hover {
-      background: var(--light-blue);
+      background-color: var(--light-blue);
       transform: translateY(-2px);
     }
 
-    /* Profile picture */
-
-    .profile-area {
-      position: relative;
-      display: flex;
-      justify-content: center;
-    }
-
-    .profile-background {
-      position: absolute;
-      width: 330px;
-      height: 330px;
-      background: var(--light-blue);
-      border-radius: 40px;
-      transform: rotate(7deg);
-    }
-
-    .profile-image {
-      position: relative;
-      width: 330px;
-      height: 390px;
-      object-fit: cover;
-      object-position: center top;
-      background: #e2e8f0;
-      border: 8px solid #ffffff;
-      border-radius: 32px;
-      box-shadow: var(--shadow);
-    }
-
-    /* Sections */
+    /* General sections */
 
     .section {
       padding: 100px 0;
@@ -273,6 +288,7 @@
 
     .section-label {
       margin: 0 0 8px;
+
       color: var(--accent);
       font-size: 0.85rem;
       font-weight: 800;
@@ -282,17 +298,20 @@
 
     .section-title {
       margin: 0;
+
+      color: var(--primary);
       font-size: clamp(2rem, 5vw, 3rem);
       letter-spacing: -0.04em;
     }
 
     .section-description {
       margin: 14px 0 0;
+
       color: var(--secondary);
       font-size: 1.05rem;
     }
 
-    /* About */
+    /* About section */
 
     .about-layout {
       display: grid;
@@ -302,6 +321,7 @@
 
     .about-text {
       margin: 0;
+
       color: var(--secondary);
       font-size: 1.05rem;
     }
@@ -314,7 +334,8 @@
 
     .detail-card {
       padding: 20px;
-      background: var(--surface);
+
+      background-color: var(--surface);
       border: 1px solid var(--border);
       border-radius: 12px;
     }
@@ -328,43 +349,7 @@
       color: var(--secondary);
     }
 
-    /* Skills */
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .skill-group {
-      padding: 28px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
-    }
-
-    .skill-group h3 {
-      margin: 0 0 18px;
-    }
-
-    .skill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-    }
-
-    .skill {
-      padding: 7px 12px;
-      color: var(--secondary);
-      background: var(--background);
-      border: 1px solid var(--border);
-      border-radius: 30px;
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-
-    /* Experience */
+    /* Experience section */
 
     .experience-list {
       display: grid;
@@ -373,7 +358,8 @@
 
     .experience-item {
       padding: 30px;
-      background: var(--surface);
+
+      background-color: var(--surface);
       border: 1px solid var(--border);
       border-radius: 16px;
     }
@@ -391,6 +377,7 @@
 
     .company {
       margin: 5px 0 0;
+
       color: var(--accent);
       font-weight: 700;
     }
@@ -402,10 +389,52 @@
 
     .experience-item ul {
       margin-bottom: 0;
+      padding-left: 20px;
+
       color: var(--secondary);
     }
 
-    /* Projects */
+    /* Skills section */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .skill-group {
+      padding: 28px;
+
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+    }
+
+    .skill-group h3 {
+      margin: 0 0 18px;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .skill {
+      padding: 7px 12px;
+
+      color: var(--secondary);
+      background-color: var(--background);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* Projects section */
 
     .projects-grid {
       display: grid;
@@ -415,10 +444,13 @@
 
     .project-card {
       overflow: hidden;
-      background: var(--surface);
+
+      background-color: var(--surface);
       border: 1px solid var(--border);
       border-radius: 18px;
+
       box-shadow: 0 15px 35px rgba(15, 23, 42, 0.05);
+
       transition:
         transform 0.25s ease,
         box-shadow 0.25s ease;
@@ -432,11 +464,14 @@
     .project-image {
       width: 100%;
       height: 230px;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--light-blue);
+
       color: var(--accent);
+      background-color: var(--light-blue);
+
       font-weight: 800;
     }
 
@@ -454,14 +489,16 @@
     }
 
     .project-technologies {
-      color: var(--accent);
+      color: var(--accent) !important;
       font-size: 0.9rem;
       font-weight: 700;
     }
 
     .project-links {
       display: flex;
+      flex-wrap: wrap;
       gap: 18px;
+
       margin-top: 20px;
     }
 
@@ -475,24 +512,28 @@
       text-decoration: underline;
     }
 
-    /* Contact */
+    /* Contact section */
 
     .contact-box {
       padding: 55px;
+
       color: #ffffff;
-      background: var(--primary);
+      background-color: var(--primary);
       border-radius: 24px;
+
       text-align: center;
     }
 
     .contact-box h2 {
       margin: 0;
+
       font-size: clamp(2rem, 5vw, 3rem);
     }
 
     .contact-box p {
       max-width: 620px;
       margin: 15px auto 30px;
+
       color: #cbd5e1;
     }
 
@@ -505,29 +546,35 @@
 
     .contact-link {
       padding: 11px 20px;
+
       color: #ffffff;
       border: 1px solid #475569;
       border-radius: 8px;
+
       font-weight: 700;
       text-decoration: none;
+
+      transition: background-color 0.2s ease;
     }
 
     .contact-link:hover {
-      background: #1e293b;
+      background-color: #1e293b;
     }
 
     /* Footer */
 
     footer {
       padding: 35px 0;
+
       color: var(--secondary);
-      text-align: center;
       border-top: 1px solid var(--border);
+
+      text-align: center;
     }
 
-    /* Mobile */
+    /* Tablet and mobile */
 
-    @media (max-width: 850px) {
+    @media (max-width: 900px) {
       .navbar {
         flex-wrap: wrap;
         padding: 18px 0;
@@ -538,38 +585,66 @@
         width: 100%;
       }
 
-      .hero-layout,
+      .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .profile-background {
+        width: 280px;
+        height: 310px;
+      }
+
+      .profile-image {
+        width: 280px;
+        height: 340px;
+      }
+
+      .hero-content {
+        text-align: center;
+      }
+
+      .hero-description {
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
       .about-layout {
         grid-template-columns: 1fr;
       }
 
-      .hero-layout {
-        gap: 55px;
+      .skills-grid {
+        grid-template-columns: 1fr;
       }
 
-      .profile-area {
-        order: -1;
-      }
-
-      .profile-background {
-        width: 260px;
-        height: 260px;
-      }
-
-      .profile-image {
-        width: 260px;
-        height: 310px;
-      }
-
-      .skills-grid,
       .projects-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    @media (max-width: 550px) {
+    @media (max-width: 600px) {
       .container {
-        width: min(var(--container), calc(100% - 32px));
+        width: min(
+          var(--container-width),
+          calc(100% - 32px)
+        );
+      }
+
+      .site-header {
+        position: relative;
+      }
+
+      .navbar {
+        justify-content: center;
+      }
+
+      .logo {
+        margin-right: 0;
+        text-align: center;
       }
 
       .nav-link {
@@ -581,7 +656,18 @@
       }
 
       .hero {
+        min-height: auto;
         padding: 60px 0;
+      }
+
+      .profile-background {
+        width: 230px;
+        height: 260px;
+      }
+
+      .profile-image {
+        width: 230px;
+        height: 285px;
       }
 
       .section {
@@ -594,6 +680,7 @@
 
       .experience-top {
         flex-direction: column;
+        gap: 8px;
       }
 
       .contact-box {
@@ -605,6 +692,8 @@
 
 <body>
 
+  <!-- Header -->
+
   <header class="site-header">
     <nav class="navbar container">
 
@@ -612,11 +701,25 @@
         Saeed Norouzi
       </a>
 
-      <a class="nav-link" href="#about">About</a>
-      <a class="nav-link" href="#experience">Experience</a>
-      <a class="nav-link" href="#skills">Skills</a>
-      <a class="nav-link" href="#projects">Projects</a>
-      <a class="nav-link" href="#contact">Contact</a>
+      <a class="nav-link" href="#about">
+        About
+      </a>
+
+      <a class="nav-link" href="#experience">
+        Experience
+      </a>
+
+      <a class="nav-link" href="#skills">
+        Skills
+      </a>
+
+      <a class="nav-link" href="#projects">
+        Projects
+      </a>
+
+      <a class="nav-link" href="#contact">
+        Contact
+      </a>
 
       <a
         class="nav-cv"
@@ -632,28 +735,44 @@
 
   <main>
 
+    <!-- Hero section -->
+
     <section class="hero" id="home">
       <div class="hero-layout container">
 
+        <!-- Profile picture on the left -->
+
+        <div class="profile-area">
+          <div class="profile-background"></div>
+
+          <img
+            class="profile-image"
+            src="profile.jpg"
+            alt="Professional portrait of Saeed Norouzi"
+          >
+        </div>
+
+        <!-- Introduction on the right -->
+
         <div class="hero-content">
 
-          <div class="availability">
-            <span class="availability-dot"></span>
-            Open to opportunities
-          </div>
-
-          <p class="hero-intro">Hello, I am</p>
+          <p class="hero-intro">
+            Hello, I am
+          </p>
 
           <h1>Saeed Norouzi</h1>
 
-          <!-- EDIT YOUR JOB TITLE -->
+          <!-- Replace this with your real job title -->
+
           <h2>Your Professional Job Title</h2>
 
-          <!-- EDIT YOUR INTRODUCTION -->
+          <!-- Replace this with your real introduction -->
+
           <p class="hero-description">
-            I am a motivated professional specializing in your field.
-            I create practical solutions, enjoy solving complex problems,
-            and continuously develop my technical and professional skills.
+            I am a motivated professional specializing in my field.
+            I enjoy solving complex problems, creating practical
+            solutions, and continuously developing my technical and
+            professional skills.
           </p>
 
           <div class="hero-buttons">
@@ -677,37 +796,34 @@
           </div>
         </div>
 
-        <div class="profile-area">
-          <div class="profile-background"></div>
-
-          <!-- YOUR PROFILE PICTURE -->
-          <img
-            class="profile-image"
-            src="profile.jpg"
-            alt="Professional portrait of Saeed Norouzi"
-          >
-        </div>
-
       </div>
     </section>
+
+    <!-- About section -->
 
     <section class="section" id="about">
       <div class="container">
 
         <div class="section-header">
-          <p class="section-label">Introduction</p>
-          <h2 class="section-title">About Me</h2>
+          <p class="section-label">
+            Introduction
+          </p>
+
+          <h2 class="section-title">
+            About Me
+          </h2>
         </div>
 
         <div class="about-layout">
 
-          <!-- EDIT THIS TEXT -->
+          <!-- Replace this paragraph with your information -->
+
           <p class="about-text">
-            I am a dedicated professional with experience in your field.
+            I am a dedicated professional with experience in my field.
             My interests include problem-solving, technology, continuous
-            learning, and building useful projects. I am currently seeking
-            an opportunity where I can contribute my skills, work with an
-            experienced team, and continue growing professionally.
+            learning, and building useful projects. I am looking for a
+            position where I can contribute my skills, collaborate with
+            an experienced team, and continue growing professionally.
           </p>
 
           <div class="details-grid">
@@ -728,8 +844,8 @@
             </div>
 
             <div class="detail-card">
-              <strong>Availability</strong>
-              <span>Open to opportunities</span>
+              <strong>Specialization</strong>
+              <span>Your professional field</span>
             </div>
 
           </div>
@@ -738,38 +854,62 @@
       </div>
     </section>
 
+    <!-- Experience section -->
+
     <section class="section" id="experience">
       <div class="container">
 
         <div class="section-header">
-          <p class="section-label">Career</p>
-          <h2 class="section-title">Professional Experience</h2>
+
+          <p class="section-label">
+            Career
+          </p>
+
+          <h2 class="section-title">
+            Professional Experience
+          </h2>
 
           <p class="section-description">
             Add your employment, internships, freelance work,
             volunteer experience, or important academic experience.
           </p>
+
         </div>
 
         <div class="experience-list">
 
           <article class="experience-item">
+
             <div class="experience-top">
 
               <div>
                 <h3>Your Job Title</h3>
-                <p class="company">Company Name</p>
+
+                <p class="company">
+                  Company Name
+                </p>
               </div>
 
-              <span class="date">2024 – Present</span>
+              <span class="date">
+                2024 – Present
+              </span>
 
             </div>
 
             <ul>
-              <li>Describe an important responsibility or achievement.</li>
-              <li>Explain a problem you solved or a process you improved.</li>
-              <li>Mention relevant technologies, tools, or methods.</li>
+              <li>
+                Describe an important responsibility or achievement.
+              </li>
+
+              <li>
+                Explain a problem you solved or a process you improved.
+              </li>
+
+              <li>
+                Mention relevant technologies, tools, or methods.
+              </li>
             </ul>
+
           </article>
 
         </div>
@@ -777,17 +917,32 @@
       </div>
     </section>
 
+    <!-- Skills section -->
+
     <section class="section" id="skills">
       <div class="container">
 
         <div class="section-header">
-          <p class="section-label">Expertise</p>
-          <h2 class="section-title">Skills</h2>
+
+          <p class="section-label">
+            Expertise
+          </p>
+
+          <h2 class="section-title">
+            Skills
+          </h2>
+
+          <p class="section-description">
+            Add the skills that are relevant to the jobs you are
+            applying for.
+          </p>
+
         </div>
 
         <div class="skills-grid">
 
           <div class="skill-group">
+
             <h3>Programming</h3>
 
             <div class="skill-list">
@@ -795,9 +950,11 @@
               <span class="skill">JavaScript</span>
               <span class="skill">SQL</span>
             </div>
+
           </div>
 
           <div class="skill-group">
+
             <h3>Web Development</h3>
 
             <div class="skill-list">
@@ -805,9 +962,11 @@
               <span class="skill">CSS</span>
               <span class="skill">Responsive Design</span>
             </div>
+
           </div>
 
           <div class="skill-group">
+
             <h3>Tools</h3>
 
             <div class="skill-list">
@@ -815,6 +974,7 @@
               <span class="skill">GitHub</span>
               <span class="skill">Visual Studio Code</span>
             </div>
+
           </div>
 
         </div>
@@ -822,19 +982,30 @@
       </div>
     </section>
 
+    <!-- Projects section -->
+
     <section class="section" id="projects">
       <div class="container">
 
         <div class="section-header">
-          <p class="section-label">Portfolio</p>
-          <h2 class="section-title">Selected Projects</h2>
+
+          <p class="section-label">
+            Portfolio
+          </p>
+
+          <h2 class="section-title">
+            Selected Projects
+          </h2>
 
           <p class="section-description">
             Add your strongest and most relevant projects here.
           </p>
+
         </div>
 
         <div class="projects-grid">
+
+          <!-- Project one -->
 
           <article class="project-card">
 
@@ -856,12 +1027,29 @@
               </p>
 
               <div class="project-links">
-                <a href="#">Live Project</a>
-                <a href="#">GitHub Code</a>
+
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Live Project
+                </a>
+
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub Code
+                </a>
+
               </div>
 
             </div>
           </article>
+
+          <!-- Project two -->
 
           <article class="project-card">
 
@@ -874,8 +1062,8 @@
               <h3>Project Two</h3>
 
               <p>
-                Explain what this project does and what you learned
-                while developing it.
+                Explain what this project does, why you created it,
+                and what you learned while developing it.
               </p>
 
               <p class="project-technologies">
@@ -883,8 +1071,23 @@
               </p>
 
               <div class="project-links">
-                <a href="#">Live Project</a>
-                <a href="#">GitHub Code</a>
+
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Live Project
+                </a>
+
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub Code
+                </a>
+
               </div>
 
             </div>
@@ -895,6 +1098,8 @@
       </div>
     </section>
 
+    <!-- Contact section -->
+
     <section class="section" id="contact">
       <div class="container">
 
@@ -903,11 +1108,13 @@
           <h2>Let’s work together</h2>
 
           <p>
-            I am currently open to professional opportunities.
-            Contact me to discuss a position, project, or collaboration.
+            Contact me to discuss a professional position,
+            project, or collaboration.
           </p>
 
           <div class="contact-links">
+
+            <!-- Replace with your real email -->
 
             <a
               class="contact-link"
@@ -915,6 +1122,8 @@
             >
               Email
             </a>
+
+            <!-- Replace with your GitHub address if necessary -->
 
             <a
               class="contact-link"
@@ -924,6 +1133,8 @@
             >
               GitHub
             </a>
+
+            <!-- Replace with your real LinkedIn address -->
 
             <a
               class="contact-link"
@@ -935,12 +1146,15 @@
             </a>
 
           </div>
+
         </div>
 
       </div>
     </section>
 
   </main>
+
+  <!-- Footer -->
 
   <footer>
     <div class="container">
