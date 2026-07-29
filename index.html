@@ -13,20 +13,20 @@
     content="Professional portfolio and CV of Saeed Norouzi."
   >
 
-  <title>Saeed Norouzi | Portfolio</title>
+  <title>Saeed Norouzi | Professional Portfolio</title>
 
   <style>
     :root {
       --background: #f8fafc;
       --surface: #ffffff;
       --primary: #0f172a;
-      --secondary: #475569;
+      --secondary: #526077;
       --accent: #2563eb;
       --accent-dark: #1d4ed8;
-      --light-blue: #eff6ff;
+      --accent-light: #eff6ff;
       --border: #e2e8f0;
       --container-width: 1120px;
-      --shadow: 0 20px 50px rgba(15, 23, 42, 0.1);
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.1);
     }
 
     * {
@@ -39,8 +39,8 @@
 
     body {
       margin: 0;
-      background-color: var(--background);
       color: var(--primary);
+      background-color: var(--background);
       font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -67,42 +67,68 @@
       margin: 0 auto;
     }
 
-    /* Header */
+    /* =========================
+       Header and navigation
+    ========================== */
 
     .site-header {
       position: sticky;
       top: 0;
       z-index: 1000;
-
-      background-color: rgba(248, 250, 252, 0.95);
+      background-color: rgba(248, 250, 252, 0.96);
       border-bottom: 1px solid var(--border);
-
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
     }
 
     .navbar {
-      min-height: 76px;
-
+      min-height: 74px;
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 36px;
     }
 
-    .logo {
+    .brand {
+      width: 46px;
+      height: 46px;
       margin-right: auto;
 
-      color: var(--primary);
-      font-size: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      color: #ffffff;
+      background-color: var(--primary);
+      border-radius: 12px;
+
+      font-size: 1rem;
       font-weight: 800;
       letter-spacing: -0.03em;
       text-decoration: none;
+
+      transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .brand:hover {
+      background-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 30px;
     }
 
     .nav-link {
+      position: relative;
+      padding: 8px 0;
+
       color: var(--secondary);
-      font-size: 0.95rem;
-      font-weight: 600;
+      font-size: 0.94rem;
+      font-weight: 650;
       text-decoration: none;
 
       transition: color 0.2s ease;
@@ -112,32 +138,58 @@
       color: var(--accent);
     }
 
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 3px;
+      left: 0;
+
+      height: 2px;
+      background-color: var(--accent);
+      border-radius: 2px;
+
+      transform: scaleX(0);
+      transition: transform 0.2s ease;
+    }
+
+    .nav-link:hover::after {
+      transform: scaleX(1);
+    }
+
     .nav-cv {
-      padding: 10px 18px;
+      padding: 10px 19px;
 
       color: #ffffff;
       background-color: var(--accent);
-      border-radius: 8px;
+      border: 1px solid var(--accent);
+      border-radius: 9px;
 
       font-size: 0.9rem;
-      font-weight: 700;
+      font-weight: 750;
       text-decoration: none;
 
       transition:
         background-color 0.2s ease,
-        transform 0.2s ease;
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
     }
 
     .nav-cv:hover {
       background-color: var(--accent-dark);
+      border-color: var(--accent-dark);
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.2);
       transform: translateY(-1px);
     }
 
-    /* Hero section */
+    /* =========================
+       Hero section
+    ========================== */
 
     .hero {
-      min-height: calc(100vh - 76px);
-      padding: 80px 0;
+      min-height: calc(100vh - 74px);
+      padding: 70px 0;
 
       display: flex;
       align-items: center;
@@ -145,47 +197,68 @@
 
     .hero-layout {
       display: grid;
-      grid-template-columns: 300px 1fr;
+      grid-template-columns: 260px minmax(0, 1fr);
       align-items: center;
-      gap: 75px;
+      gap: 72px;
     }
 
-    /* Smaller profile picture */
+    /* Profile picture */
 
     .profile-area {
       position: relative;
-
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
     }
 
     .profile-background {
       position: absolute;
 
-      width: 230px;
-      height: 260px;
+      width: 220px;
+      height: 250px;
 
-      background-color: var(--light-blue);
+      background-color: var(--accent-light);
       border-radius: 28px;
 
       transform: rotate(-6deg);
     }
 
-    .profile-image {
+    .profile-frame {
       position: relative;
 
-      width: 230px;
-      height: 280px;
+      width: 220px;
+      height: 265px;
 
-      object-fit: cover;
-      object-position: center top;
-
+      overflow: hidden;
       background-color: #e2e8f0;
       border: 6px solid #ffffff;
       border-radius: 25px;
-
       box-shadow: var(--shadow);
+    }
+
+    .profile-image {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+
+      display: none;
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+      color: var(--secondary);
+      background-color: #e2e8f0;
+
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 650;
     }
 
     /* Hero text */
@@ -195,25 +268,25 @@
 
       color: var(--accent);
       font-size: 1rem;
-      font-weight: 700;
+      font-weight: 750;
     }
 
     .hero h1 {
       margin: 0;
 
       color: var(--primary);
-      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-size: clamp(3.5rem, 7vw, 5.8rem);
       line-height: 1;
-      letter-spacing: -0.055em;
+      letter-spacing: -0.06em;
     }
 
     .hero h2 {
-      margin: 22px 0;
+      margin: 22px 0 20px;
 
       color: var(--secondary);
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
       line-height: 1.2;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.035em;
     }
 
     .hero-description {
@@ -221,7 +294,7 @@
       margin: 0;
 
       color: var(--secondary);
-      font-size: 1.1rem;
+      font-size: 1.08rem;
     }
 
     .hero-buttons {
@@ -243,12 +316,13 @@
       border: 2px solid var(--accent);
       border-radius: 9px;
 
-      font-weight: 700;
+      font-weight: 750;
       text-decoration: none;
 
       transition:
         background-color 0.2s ease,
         color 0.2s ease,
+        border-color 0.2s ease,
         transform 0.2s ease;
     }
 
@@ -269,29 +343,35 @@
     }
 
     .button-secondary:hover {
-      background-color: var(--light-blue);
+      background-color: var(--accent-light);
       transform: translateY(-2px);
     }
 
-    /* General sections */
+    /* =========================
+       General sections
+    ========================== */
 
     .section {
-      padding: 100px 0;
-      scroll-margin-top: 80px;
+      padding: 95px 0;
+      scroll-margin-top: 85px;
+    }
+
+    .section:nth-child(even) {
+      background-color: #ffffff;
     }
 
     .section-header {
-      max-width: 700px;
-      margin-bottom: 45px;
+      max-width: 720px;
+      margin-bottom: 42px;
     }
 
     .section-label {
       margin: 0 0 8px;
 
       color: var(--accent);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 800;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
     }
 
@@ -300,35 +380,37 @@
 
       color: var(--primary);
       font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.2;
       letter-spacing: -0.04em;
     }
 
     .section-description {
       margin: 14px 0 0;
-
       color: var(--secondary);
-      font-size: 1.05rem;
+      font-size: 1.04rem;
     }
 
-    /* About section */
+    /* =========================
+       About section
+    ========================== */
 
     .about-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 60px;
+      align-items: start;
     }
 
     .about-text {
       margin: 0;
-
       color: var(--secondary);
-      font-size: 1.05rem;
+      font-size: 1.06rem;
     }
 
     .details-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 18px;
+      gap: 16px;
     }
 
     .detail-card {
@@ -336,19 +418,23 @@
 
       background-color: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 13px;
     }
 
     .detail-card strong {
       display: block;
       margin-bottom: 4px;
+      font-size: 0.95rem;
     }
 
     .detail-card span {
       color: var(--secondary);
+      font-size: 0.94rem;
     }
 
-    /* Experience section */
+    /* =========================
+       Experience section
+    ========================== */
 
     .experience-list {
       display: grid;
@@ -361,12 +447,14 @@
       background-color: var(--surface);
       border: 1px solid var(--border);
       border-radius: 16px;
+
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.04);
     }
 
     .experience-top {
       display: flex;
       justify-content: space-between;
-      gap: 20px;
+      gap: 24px;
     }
 
     .experience-item h3 {
@@ -376,24 +464,25 @@
 
     .company {
       margin: 5px 0 0;
-
       color: var(--accent);
-      font-weight: 700;
+      font-weight: 750;
     }
 
     .date {
       color: var(--secondary);
+      font-size: 0.95rem;
       white-space: nowrap;
     }
 
     .experience-item ul {
       margin-bottom: 0;
       padding-left: 20px;
-
       color: var(--secondary);
     }
 
-    /* Skills section */
+    /* =========================
+       Skills section
+    ========================== */
 
     .skills-grid {
       display: grid;
@@ -402,17 +491,18 @@
     }
 
     .skill-group {
-      padding: 28px;
+      padding: 27px;
 
       background-color: var(--surface);
       border: 1px solid var(--border);
       border-radius: 16px;
 
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.04);
     }
 
     .skill-group h3 {
       margin: 0 0 18px;
+      font-size: 1.16rem;
     }
 
     .skill-list {
@@ -429,11 +519,13 @@
       border: 1px solid var(--border);
       border-radius: 30px;
 
-      font-size: 0.9rem;
-      font-weight: 600;
+      font-size: 0.88rem;
+      font-weight: 650;
     }
 
-    /* Projects section */
+    /* =========================
+       Projects section
+    ========================== */
 
     .projects-grid {
       display: grid;
@@ -448,7 +540,7 @@
       border: 1px solid var(--border);
       border-radius: 18px;
 
-      box-shadow: 0 15px 35px rgba(15, 23, 42, 0.05);
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.05);
 
       transition:
         transform 0.25s ease,
@@ -469,13 +561,13 @@
       justify-content: center;
 
       color: var(--accent);
-      background-color: var(--light-blue);
+      background-color: var(--accent-light);
 
-      font-weight: 800;
+      font-weight: 750;
     }
 
     .project-content {
-      padding: 28px;
+      padding: 27px;
     }
 
     .project-content h3 {
@@ -490,20 +582,20 @@
     .project-technologies {
       color: var(--accent) !important;
       font-size: 0.9rem;
-      font-weight: 700;
+      font-weight: 750;
     }
 
     .project-links {
+      margin-top: 19px;
+
       display: flex;
       flex-wrap: wrap;
       gap: 18px;
-
-      margin-top: 20px;
     }
 
     .project-links a {
       color: var(--accent);
-      font-weight: 700;
+      font-weight: 750;
       text-decoration: none;
     }
 
@@ -511,7 +603,9 @@
       text-decoration: underline;
     }
 
-    /* Contact section */
+    /* =========================
+       Contact section
+    ========================== */
 
     .contact-box {
       padding: 55px;
@@ -531,7 +625,6 @@
     .contact-box p {
       max-width: 620px;
       margin: 15px auto 30px;
-
       color: #cbd5e1;
     }
 
@@ -547,55 +640,70 @@
 
       color: #ffffff;
       border: 1px solid #475569;
-      border-radius: 8px;
+      border-radius: 9px;
 
       font-weight: 700;
       text-decoration: none;
 
-      transition: background-color 0.2s ease;
+      transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
     }
 
     .contact-link:hover {
       background-color: #1e293b;
+      border-color: #64748b;
     }
 
-    /* Footer */
+    /* =========================
+       Footer
+    ========================== */
 
     footer {
-      padding: 35px 0;
+      padding: 34px 0;
 
       color: var(--secondary);
+      background-color: #ffffff;
       border-top: 1px solid var(--border);
 
       text-align: center;
+      font-size: 0.92rem;
     }
 
-    /* Tablet */
+    /* =========================
+       Tablet
+    ========================== */
 
     @media (max-width: 900px) {
       .navbar {
         flex-wrap: wrap;
-        padding: 18px 0;
-        gap: 16px;
+        padding: 14px 0;
+        gap: 14px;
       }
 
-      .logo {
+      .brand {
+        margin-right: auto;
+      }
+
+      .nav-menu {
+        order: 3;
         width: 100%;
+
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px 24px;
+
+        padding-top: 4px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 65px 0 80px;
       }
 
       .hero-layout {
         grid-template-columns: 1fr;
         gap: 50px;
-      }
-
-      .profile-background {
-        width: 210px;
-        height: 230px;
-      }
-
-      .profile-image {
-        width: 210px;
-        height: 250px;
       }
 
       .hero-content {
@@ -624,7 +732,9 @@
       }
     }
 
-    /* Mobile */
+    /* =========================
+       Mobile
+    ========================== */
 
     @media (max-width: 600px) {
       .container {
@@ -639,39 +749,47 @@
       }
 
       .navbar {
-        justify-content: center;
+        gap: 12px;
       }
 
-      .logo {
-        margin-right: 0;
-        text-align: center;
+      .brand {
+        width: 42px;
+        height: 42px;
+      }
+
+      .nav-menu {
+        gap: 10px 17px;
       }
 
       .nav-link {
-        font-size: 0.85rem;
+        font-size: 0.84rem;
       }
 
       .nav-cv {
-        padding: 8px 12px;
+        padding: 8px 13px;
+        font-size: 0.84rem;
       }
 
       .hero {
-        min-height: auto;
-        padding: 55px 0;
+        padding: 50px 0 65px;
       }
 
       .profile-background {
-        width: 180px;
-        height: 200px;
+        width: 185px;
+        height: 210px;
       }
 
-      .profile-image {
-        width: 180px;
-        height: 215px;
+      .profile-frame {
+        width: 185px;
+        height: 225px;
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 15vw, 4.2rem);
       }
 
       .section {
-        padding: 75px 0;
+        padding: 72px 0;
       }
 
       .details-grid {
@@ -697,29 +815,39 @@
   <header class="site-header">
     <nav class="navbar container">
 
-      <a class="logo" href="#home">
-        Saeed Norouzi
+      <!-- Compact logo instead of repeating your full name -->
+
+      <a
+        class="brand"
+        href="#home"
+        aria-label="Go to home section"
+      >
+        SN
       </a>
 
-      <a class="nav-link" href="#about">
-        About
-      </a>
+      <div class="nav-menu">
 
-      <a class="nav-link" href="#experience">
-        Experience
-      </a>
+        <a class="nav-link" href="#about">
+          About
+        </a>
 
-      <a class="nav-link" href="#skills">
-        Skills
-      </a>
+        <a class="nav-link" href="#experience">
+          Experience
+        </a>
 
-      <a class="nav-link" href="#projects">
-        Projects
-      </a>
+        <a class="nav-link" href="#skills">
+          Skills
+        </a>
 
-      <a class="nav-link" href="#contact">
-        Contact
-      </a>
+        <a class="nav-link" href="#projects">
+          Projects
+        </a>
+
+        <a class="nav-link" href="#contact">
+          Contact
+        </a>
+
+      </div>
 
       <a
         class="nav-cv"
@@ -740,19 +868,32 @@
     <section class="hero" id="home">
       <div class="hero-layout container">
 
-        <!-- Profile picture -->
+        <!-- Profile picture on the left -->
 
         <div class="profile-area">
+
           <div class="profile-background"></div>
 
-          <img
-            class="profile-image"
-            src="profile.jpg"
-            alt="Professional portrait of Saeed Norouzi"
-          >
+          <div class="profile-frame">
+
+            <img
+              class="profile-image"
+              src="profile.jpg"
+              alt="Professional portrait of Saeed Norouzi"
+              onerror="
+                this.style.display='none';
+                this.nextElementSibling.style.display='flex';
+              "
+            >
+
+            <div class="photo-placeholder">
+              Upload your photo and name it profile.jpg
+            </div>
+
+          </div>
         </div>
 
-        <!-- Introduction -->
+        <!-- Introduction on the right -->
 
         <div class="hero-content">
 
@@ -762,17 +903,16 @@
 
           <h1>Saeed Norouzi</h1>
 
-          <!-- Replace this with your job title -->
+          <!-- Replace with your real professional title -->
 
           <h2>Your Professional Job Title</h2>
 
-          <!-- Replace this with your introduction -->
+          <!-- Replace with your real professional introduction -->
 
           <p class="hero-description">
-            I am a motivated professional specializing in my field.
-            I enjoy solving complex problems, creating practical
-            solutions, and continuously developing my technical and
-            professional skills.
+            I am a motivated professional focused on creating practical
+            solutions, solving complex problems, and continuously
+            developing my technical and professional expertise.
           </p>
 
           <div class="hero-buttons">
@@ -821,9 +961,9 @@
           <p class="about-text">
             I am a dedicated professional with experience in my field.
             My interests include problem-solving, technology, continuous
-            learning, and building useful projects. I am looking for a
-            position where I can contribute my skills, collaborate with
-            an experienced team, and continue growing professionally.
+            learning, and developing useful projects. I am looking for
+            a position where I can contribute my skills, collaborate
+            with an experienced team, and continue growing professionally.
           </p>
 
           <div class="details-grid">
@@ -933,7 +1073,8 @@
           </h2>
 
           <p class="section-description">
-            Add skills that are relevant to the jobs you are applying for.
+            Include skills that are relevant to the positions
+            you are applying for.
           </p>
 
         </div>
@@ -997,7 +1138,7 @@
           </h2>
 
           <p class="section-description">
-            Add your strongest and most relevant projects here.
+            Present your strongest and most relevant projects here.
           </p>
 
         </div>
@@ -1016,7 +1157,7 @@
 
               <p>
                 Describe the purpose of the project, the problem you
-                solved, and your contribution.
+                solved, and your personal contribution.
               </p>
 
               <p class="project-technologies">
